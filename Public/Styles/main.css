@@ -1,0 +1,63 @@
+:root {
+    --borderColor: #4b5842;
+    --highlightColor: #8fb339;
+    --backgroundColor: #c7d59f;
+}
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    padding: 0;
+    margin: 0;
+}
+
+#game-container {
+    width: 100%;
+    height: 65%;
+    background-color: #3EC9FF; /* blue sky */
+    background-image: url(../Assets/Icons/backgroundBG.png);
+    background-position: bottom;
+    background-repeat: repeat-x; /* repeats horizontally only */
+    background-size: auto; /* keeps original image height */
+    border: 10px solid var(--borderColor);
+    box-sizing: border-box;
+    border-radius: 1em;
+}
+
+#center-col {
+    flex-grow: 2;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+#right-col,
+#left-col {
+    flex-grow: 1;
+    height: 100%;
+}
+
+#tutel {
+    position: absolute;
+    width: 100px;
+}
+
+.falling-object {
+    width: 70px;
+    height: 70px;
+    position: absolute;
+}
+
+#heart-container {
+    width: 20%;
+    height: 10%;
+    margin: 10px;
+    position: absolute;
+}
+
+#heart {
+    width: 30px;
+}
