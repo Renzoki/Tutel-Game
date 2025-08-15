@@ -36,6 +36,34 @@ let points
 let isPaused = false
 //==============================================
 
+const gameState = {
+    game: {
+        frames: frames,
+        isPaused: isPaused,
+        lives: lives
+    },
+    player: {
+        isMovingLeft: isMovingLeft,
+        isMovingRight: isMovingRight,
+        left: tutelLeft,
+        top: tutelTop
+    },
+    physics: {
+        movementRate: movementRate,
+        friction: friction,
+        gravity: gravity
+    },
+    objects: {
+        fallingObj: fallingObj,
+        fallingObjPos: fallingObjPos
+    },
+    elements: {
+        tutel: tutel,
+        gameContainer: gameContainer,
+        hearts: hearts
+    }
+};
+
 document.addEventListener("keydown", (e) => {
     if (e.key.toLowerCase() === "a") {
         tutelLeft -= 30
