@@ -1,6 +1,6 @@
 const ctx = new (window.AudioContext || window.webkitAudioContext)();
 
-function createSFX(url) { 
+function createSFX(url) {
   let buffer = null;
 
   async function load() {
@@ -31,9 +31,17 @@ async function unlockAudio() {
   ]);
 }
 
-document.addEventListener("keydown", async (e) => {
-  if (e.key.toLowerCase() === "a" || e.key.toLowerCase() === "d") {
-    await unlockAudio();
-  }
-}, { once: true });
+function allowAudio() {
+  document.addEventListener("keydown", async (e) => {
+    if (e.key.toLowerCase() === "a" || e.key.toLowerCase() === "d") {
+      await unlockAudio();
+    }
+  }, { once: true });
+}
+
+export default {
+  allowAudio,
+  chompSFX,
+  hurtSFX
+}
 
