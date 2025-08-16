@@ -1,7 +1,7 @@
-import { gameState } from "../Javascript/gameState.js" 
-import playerMovement from "../Javascript/playerMovement.js" 
-import fallingObjects from "../Javascript/fallingObjects.js" 
-import soundFX from "../Javascript/SoundFX.js"
+import { gameState } from "./gameState.js" 
+import playerMovement from "./playerMovement.js" 
+import fallingObjects from "./fallingObjects.js" 
+import soundFX from "./SoundFX.js"
 
 gameState.initializeElementValues()
 
