@@ -2,13 +2,13 @@ export function handleUserInput(gameState) {
     const { player, elements, game } = gameState
 
     document.addEventListener("keydown", (e) => {
-        if (e.key.toLowerCase() === "a") {
+        if (e.key.toLowerCase() === "a" && isWithinBounds(gameState, "left")) {
             player.left -= 30
             player.isMovingLeft = true
             elements.tutel.src = "../Assets/Icons/tutel-left.png"
         }
 
-        if (e.key.toLowerCase() === "d") {
+        if (e.key.toLowerCase() === "d" && isWithinBounds(gameState, "right")) {
             player.left += 30
             player.isMovingRight = true
             elements.tutel.src = "../Assets/Icons/tutel-right.png"
@@ -36,7 +36,7 @@ export function tutelMovement(gameState) {
         physics.friction += physics.movementRate
         player.left -= physics.friction
         tutel.style.left = player.left + "px"
-    }
+    }   
 
     if (physics.friction > 0) {
         player.isMovingLeft = false

@@ -6,6 +6,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="Styles/main.css">
     <script type="module" src="Javascript/Controller.js" defer></script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Rubik+Spray+Paint&display=swap" rel="stylesheet">
+
     <title>Tutel Game</title>
 </head>
 
@@ -14,11 +19,18 @@
     </div>
     <div id="center-col">
         <div id="game-container">
+            <div id="background">
+                <div id="day" class="bg-layer"></div>
+                <div id="sunset" class="bg-layer"></div>
+                <div id="night" class="bg-layer"></div>
+                <div id="dawn" class="bg-layer"></div>
+            </div>
             <div id="heart-container">
                 <img id="heart" src="../Assets/Icons/heartIcon.png" alt=""><img id="heart"
                     src="../Assets/Icons/heartIcon.png" alt=""><img id="heart" src="../Assets/Icons/heartIcon.png"
                     alt="">
             </div>
+            <span id="score-placeholder">0</span>
             <img id="tutel" src="../Assets/Icons/tutel-right.png" alt="">
         </div>
     </div>

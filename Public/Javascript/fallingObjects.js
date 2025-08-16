@@ -1,4 +1,6 @@
 import soundFX from "../Javascript/SoundFX.js"
+import weatherHandler from "./weatherHandler.js"
+
 
 const possibleObjects = ["donut.png", "fries.png", "jabee.png", "samgyup.png", "yowell.png", "poop.png"]
 
@@ -48,6 +50,7 @@ export function updateFallingObjects(gameState, difficulty) {
                 changeTutel(gameState, "yuck")
             }
 
+
             gameContainer.removeChild(fallingObj[i])
             fallingObj.splice(i, 1)
             fallingObjPos.splice(i, 1)
@@ -56,13 +59,16 @@ export function updateFallingObjects(gameState, difficulty) {
 }
 
 function handleContact(gameState, i) {
-    const { objects, elements } = gameState
+    const { objects, game, elements } = gameState
     const { fallingObj, fallingObjPos } = objects
-    const { gameContainer } = elements
+    const { gameContainer, pointsPlaceholder } = elements
 
     if (!fallingObj[i].src.includes("poop")) {
         soundFX.chompSFX.play()
         changeTutel(gameState, "yummy")
+        game.points++
+        weatherHandler.changeWeather(gameState)
+        pointsPlaceholder.innerText = game.points
     } else {
         takeDamage(gameState)
         changeTutel(gameState, "yuck")

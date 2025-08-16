@@ -1,8 +1,11 @@
 :root {
     --borderColor: #4b5842;
-    --highlightColor: #8fb339;
-    --backgroundColor: #c7d59f;
+    --day: #3EC9FF;
+    --night: #435f67;
+    --sunset: #ff9d2e;
+    --dawn: #645db8;
 }
+
 body {
     display: flex;
     justify-content: center;
@@ -15,14 +18,51 @@ body {
 #game-container {
     width: 100%;
     height: 65%;
-    background-color: #3EC9FF; /* blue sky */
-    background-image: url(../Assets/Icons/backgroundBG.png);
-    background-position: bottom;
-    background-repeat: repeat-x; /* repeats horizontally only */
-    background-size: auto; /* keeps original image height */
     border: 10px solid var(--borderColor);
     box-sizing: border-box;
     border-radius: 1em;
+    display: flex;
+    transition: 5s;
+}
+
+#background {
+    width: 100%;
+    height: 100%;
+    position: relative;
+}
+
+.bg-layer {
+    width: 100%;
+    height: 100%;
+    background-position: bottom;
+    background-repeat: repeat-x;
+    background-size: auto;
+    position: absolute;
+    transition: 2.5s;
+}
+
+#day {
+    opacity: 1;
+    background-color: var(--day);
+    background-image: url("../Assets/Icons/day.png");
+}
+
+#sunset {
+    opacity: 0;
+    background-color: var(--sunset);
+    background-image: url("../Assets/Icons/sunset.png");
+}
+
+#night {
+    opacity: 0;
+    background-color: var(--night);
+    background-image: url("../Assets/Icons/night.png");
+}
+
+#dawn {
+    opacity: 0;
+    background-color: var(--dawn);
+    background-image: url("../Assets/Icons/dawn.png");
 }
 
 #center-col {
@@ -51,9 +91,15 @@ body {
     position: absolute;
 }
 
+#score-placeholder {
+    font-family: Rubik Spray Paint;
+    font-size: 2.5em;
+    position: absolute;
+}
+
 #heart-container {
-    width: 20%;
-    height: 10%;
+    width: 15%;
+    height: 6%;
     margin: 10px;
     position: absolute;
 }

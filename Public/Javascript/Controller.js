@@ -1,9 +1,7 @@
-import { gameState } from "./gameState.js" 
-import playerMovement from "./playerMovement.js" 
-import fallingObjects from "./fallingObjects.js" 
+import { gameState } from "./gameState.js"
+import playerMovement from "./playerMovement.js"
+import fallingObjects from "./fallingObjects.js"
 import soundFX from "./SoundFX.js"
-
-gameState.initializeElementValues()
 
 function gameLoop() {
     if (!gameState.game.isPaused) {
@@ -53,5 +51,6 @@ function restartGame(gameState) {
 }
 
 soundFX.allowAudio()
+gameState.initializeElementValues()
 playerMovement.handleUserInput(gameState)
 gameLoop()
