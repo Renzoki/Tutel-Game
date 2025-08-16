@@ -2,22 +2,24 @@ export function handleUserInput(gameState) {
     const { player, elements, game } = gameState
 
     document.addEventListener("keydown", (e) => {
-        if (e.key.toLowerCase() === "a" && isWithinBounds(gameState, "left")) {
+        if (e.key.toLowerCase() === "a" && isWithinBounds(gameState, "left") && !game.isPaused) {
             player.left -= 30
             player.isMovingLeft = true
             elements.tutel.src = "../Assets/Icons/tutel-left.png"
         }
 
-        if (e.key.toLowerCase() === "d" && isWithinBounds(gameState, "right")) {
+        if (e.key.toLowerCase() === "d" && isWithinBounds(gameState, "right") && !game.isPaused) {
             player.left += 30
             player.isMovingRight = true
             elements.tutel.src = "../Assets/Icons/tutel-right.png"
         }
 
-        if (e.code === "Space" && !game.isPaused && player.lives > 0) {
-            game.isPaused = true
-        } else {
-            game.isPaused = false
+        if (e.code === "Space" && player.lives > 0) {
+            if(!game.isPaused)
+                game.isPaused = true
+            else {
+                game.isPaused = false
+            }
         }
     })
 }

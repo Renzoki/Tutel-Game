@@ -6,7 +6,7 @@ export function changeWeather(gameState) {
     const night = document.querySelector("#night")
     const dawn = document.querySelector("#dawn")
 
-    if (game.points % 10 === 0 && game.points > 0) {
+    if (game.points % 16 === 0 && game.points > 0) {
         if (weather.time === 0) {
             day.style.opacity = 1
             dawn.style.opacity = 0

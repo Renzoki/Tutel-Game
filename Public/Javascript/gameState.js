@@ -39,11 +39,21 @@ export const gameState = {
     initializeElementValues() {
         let containerRect = this.elements.containerRect
 
+        this.physics.movementRate = 0.2
+        this.physics.friction = -3
+        this.game.frames = 0
+
+        this.player.lives = 3
+        this.player.isMovingLeft = false
+        this.player.isMovingRight = false
         this.player.left = (window.innerWidth / 2) - 60
         this.player.top = containerRect.bottom - 95
+
+        this.objects.fallingObj.length = 0
+        this.objects.fallingObjPos.length = 0
+
         this.elements.tutel.style.left = this.player.left + "px"
         this.elements.tutel.style.top = this.player.top + "px"
-
         this.elements.pointsPlaceholder.style.left = (window.innerWidth / 2) - 20 + "px"
         this.elements.pointsPlaceholder.style.top = containerRect.top + 60 + "px"
     }
