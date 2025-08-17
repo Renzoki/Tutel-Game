@@ -2,12 +2,8 @@ export const gameState = {
     game: {
         frames: 0,
         points: 0,
-        isPaused: false,
-    },
-    weather: {
         time: 1,
-        timeEvent: ["day", "sunset", "night", "sunset"],
-        specialEvent: ["poopRain", "friesRain"]
+        isPaused: false,
     },
     player: {
         lives: 3,
@@ -34,6 +30,8 @@ export const gameState = {
         pointsPlaceholder: document.querySelector("#score-placeholder"),
         originalFallingObject: document.querySelector(".falling-object"),
         copyOfHeart: document.querySelector("#heart-container").querySelector("#heart"),
+        pauseBG: document.querySelector("#pause"),
+        restartBG: document.querySelector("#restart"),
     },
 
     initializeElementValues() {
@@ -44,6 +42,7 @@ export const gameState = {
         this.game.frames = 0
 
         this.player.lives = 3
+        this.player.points = 0
         this.player.isMovingLeft = false
         this.player.isMovingRight = false
         this.player.left = (window.innerWidth / 2) - 60
@@ -54,7 +53,9 @@ export const gameState = {
 
         this.elements.tutel.style.left = this.player.left + "px"
         this.elements.tutel.style.top = this.player.top + "px"
+        this.elements.pointsPlaceholder.innerText = 0
         this.elements.pointsPlaceholder.style.left = (window.innerWidth / 2) - 20 + "px"
         this.elements.pointsPlaceholder.style.top = containerRect.top + 60 + "px"
+        this.elements.restartBG.style.opacity = 0
     }
 };

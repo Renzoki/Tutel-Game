@@ -16,12 +16,13 @@ function gameLoop() {
 
     if (gameState.player.lives > 0)
         requestAnimationFrame(gameLoop)
-
+    else
+        displayGameOver()
 }
 
-function restartGame(gameState) {
+function restartGame() {
     const { elements } = gameState
-    const { gameContainer, hearts } = elements
+    const { gameContainer, hearts, copyOfHeart } = elements
 
     let currentObjects = gameContainer.querySelectorAll(".falling-object")
     currentObjects.forEach((obj) => {
@@ -33,12 +34,33 @@ function restartGame(gameState) {
         hearts.append(newHeart)
     }
 
-    gameState.initializeElementValues()
     soundFX.allowAudio()
+    gameState.initializeElementValues()
     gameLoop()
+}
+
+function displayGameOver() {
+    const { game, elements } = gameState
+    const { restartBG } = elements
+
+    const score = restartBG.querySelector("#gained-money")
+    score.innerText = game.points
+    restartBG.style.opacity = 0.9
+
+    soundFX.superMarioTheme.stop()
+}
+
+function setRestartListener() {
+    const { player } = gameState
+
+    window.addEventListener("keydown", (e) => {
+        if (e.code === "Space" && player.lives === 0)
+            restartGame()
+    })
 }
 
 soundFX.allowAudio()
 gameState.initializeElementValues()
 playerMovement.handleUserInput(gameState)
+setRestartListener()
 gameLoop()

@@ -15,9 +15,11 @@ export function handleUserInput(gameState) {
         }
 
         if (e.code === "Space" && player.lives > 0) {
-            if(!game.isPaused)
+            if (!game.isPaused) {
+                elements.pauseBG.style.opacity = 0.7
                 game.isPaused = true
-            else {
+            } else {
+                elements.pauseBG.style.opacity = 0
                 game.isPaused = false
             }
         }
@@ -38,7 +40,7 @@ export function tutelMovement(gameState) {
         physics.friction += physics.movementRate
         player.left -= physics.friction
         tutel.style.left = player.left + "px"
-    }   
+    }
 
     if (physics.friction > 0) {
         player.isMovingLeft = false
