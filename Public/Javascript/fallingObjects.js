@@ -1,6 +1,4 @@
 import soundFX from "../Javascript/SoundFX.js"
-import weatherHandler from "./weatherHandler.js"
-
 
 const possibleObjects = ["donut.png", "fries.png", "jabee.png", "samgyup.png", "yowell.png", "poop.png"]
 
@@ -15,10 +13,10 @@ export function generateFallingObject(gameState, difficulty) {
     object.style.top = containerRect.top + "px"
     object.style.left = randNum + "px"
 
-    if (difficulty = "Easy") { //Generate more poop depending on difficulty
+    if (difficulty === "Easy") { //Generate more poop depending on difficulty
         let randNum = Math.floor(Math.random() * 5 + 1);
         object.setAttribute("src", "../Assets/Icons/" + possibleObjects[randNum])
-    } else if (difficulty = "Normal") {
+    } else if (difficulty === "Normal") {
         let randNum = Math.floor(Math.random() * 6);
         object.setAttribute("src", "../Assets/Icons/" + possibleObjects[randNum])
     } else if (difficulty = "Hard") {
@@ -64,11 +62,11 @@ function handleContact(gameState, i) {
     const { gameContainer, pointsPlaceholder } = elements
 
     if (!fallingObj[i].src.includes("poop")) {
+        game.points++
+        pointsPlaceholder.innerText = game.points
+
         soundFX.chompSFX.play()
         changeTutel(gameState, "yummy")
-        game.points++
-        weatherHandler.changeWeather(gameState)
-        pointsPlaceholder.innerText = game.points
     } else {
         takeDamage(gameState)
         changeTutel(gameState, "yuck")
