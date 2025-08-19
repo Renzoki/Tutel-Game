@@ -10,7 +10,8 @@ let cloudsPos = []
 
 export function animateBackground() {
     fillXGrid()
-    spawnClouds()
+    preloadClouds()
+    appendClouds()
     moveClouds()
 }
 
@@ -23,31 +24,53 @@ function fillXGrid() {
     }
 }
 
-function spawnClouds() {
+function preloadClouds() {
+    cloudsPos = [
+        1152, 1058, 962, 866, 770, 676,
+        580, 484, 388, 290, 194, 96,
+        0, -94, -186, -282, -378, -474
+    ]
+
+    for (let i = 0; i < cloudsPos.length; i++) {
+        let cloud = generateCloud()
+        clouds.push(cloud)
+        cloud.style.left = cloudsPos[i] + "px"
+        background.append(cloud)
+    }
+}
+
+
+function appendClouds() {
     setInterval(() => {
-        let randNum = Math.floor(Math.random() * 5)
-        let cloud = document.createElement("img")
-
-        cloud.id = "cloud"
-
-        let randCloud = Math.floor(Math.random() * 7) + 1
-        cloud.src = `../Assets/Icons/cloud${randCloud}.png`
-        cloud.style.left = -500 + "px"
-
-        while (previousRandNums.includes(randNum)) {
-            randNum = Math.floor(Math.random() * 5)
-        }
-
-        cloud.style.top = xGrid1[randNum] + "px"
-        previousRandNums.push(randNum)
-
-        if (previousRandNums.length > 2)
-            previousRandNums.splice(0, 1)
+        let cloud = generateCloud()
 
         clouds.push(cloud)
         cloudsPos.push(-500)
         background.append(cloud)
     }, 1500)
+}
+
+function generateCloud() {
+    let randNum = Math.floor(Math.random() * 5)
+    let cloud = document.createElement("img")
+
+    cloud.id = "cloud"
+
+    let randCloud = Math.floor(Math.random() * 7) + 1
+    cloud.src = `../Assets/Icons/cloud${randCloud}.png`
+    cloud.style.left = -500 + "px"
+
+    while (previousRandNums.includes(randNum)) {
+        randNum = Math.floor(Math.random() * 5)
+    }
+
+    cloud.style.top = xGrid1[randNum] + "px"
+    previousRandNums.push(randNum)
+
+    if (previousRandNums.length > 2)
+        previousRandNums.splice(0, 1)
+
+    return cloud
 }
 
 function moveClouds() {

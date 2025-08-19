@@ -26,8 +26,6 @@ export function changeTime(gameState) {
             background.classList.remove("bg-night")
         }
     }
-
-    console.log(background.classList)
 }
 
 export function resetTime() {

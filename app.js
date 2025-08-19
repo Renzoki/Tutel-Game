@@ -14,7 +14,6 @@ app.get("/", (req, res) => {
 app.get("/icons", async (req, res) => {
     try {
         const icons = await listIcons()
-        console.log(icons)
         res.json(icons)
     } catch (e) {
         res.status(500).send(err.message)
