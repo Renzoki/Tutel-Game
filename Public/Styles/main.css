@@ -11,6 +11,22 @@
     --dawnBackground: #655db858;
 }
 
+.bg-day {
+    background-color: var(--dayBackground);
+}
+
+.bg-sunset {
+    background-color: var(--sunsetBackground);
+}
+
+.bg-night {
+    background-color: var(--nightBackground);
+}
+
+.bg-dawn {
+    background-color: var(--dawnBackground);
+}
+
 body {
     position: relative;
     padding: 0;
@@ -25,7 +41,6 @@ body {
     height: 100vh;
     z-index: -1;
     transition: 2.5s;
-    background-color: var(--dayBackground);
 }
 
 #main-container {

@@ -1,14 +1,16 @@
 import { gameState } from "./gameState.js"
+import soundFX from "./SoundFX.js"
+import timeHandler from "./timeHandler.js"
 import playerMovement from "./playerMovement.js"
 import fallingObjects from "./fallingObjects.js"
-import timeHandler from "./timeHandler.js"
-import soundFX from "./SoundFX.js"
+import backgroundAnimations from "./backgroundAnimations.js"
 
 function startGame() {
+    setRestartListener()
     soundFX.allowAudio()
     gameState.initializeElementValues()
+    backgroundAnimations.animateBackground()
     playerMovement.handleUserInput(gameState)
-    setRestartListener()
     gameLoop()
 }
 
@@ -19,7 +21,7 @@ function gameLoop() {
         if (gameState.game.frames % 200 === 0)
             fallingObjects.generateFallingObject(gameState, "Normal")
 
-        if (gameState.game.frames % 5000 === 0)
+        if (gameState.game.frames % 1000 === 0)
             timeHandler.changeTime(gameState)
 
         fallingObjects.updateFallingObjects(gameState, "Easy")

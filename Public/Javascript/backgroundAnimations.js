@@ -1,5 +1,6 @@
 const background = document.querySelector("#background-container")
 const backgroundRect = document.querySelector("#background-container").getBoundingClientRect()
+
 let xGrid1
 let previousRandNums = []
 
@@ -7,7 +8,7 @@ let cloudSpeed = 2
 let clouds = []
 let cloudsPos = []
 
-function animateBackground() {
+export function animateBackground() {
     fillXGrid()
     spawnClouds()
     moveClouds()
@@ -64,4 +65,6 @@ function moveClouds() {
     }, 30)
 }
 
-animateBackground()
+export default {
+    animateBackground
+}

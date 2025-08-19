@@ -1,3 +1,4 @@
+const background = document.querySelector("#background-container")
 const day = document.querySelector("#day")
 const sunset = document.querySelector("#sunset")
 const night = document.querySelector("#night")
@@ -9,26 +10,31 @@ export function changeTime(gameState) {
     if (game.frames > 0 && game.points >= 0) {
         if (game.time === 0) {
             game.time += swapVisibility(day, dawn)
-            background.style.backgroundColor = "var(--dayBackground)"
+            background.classList.add("bg-day")
+            background.classList.remove("bg-dawn")
         } else if (game.time === 1) {
             game.time += swapVisibility(sunset, day)
-            background.style.backgroundColor = "var(--sunsetBackground)"
+            background.classList.add("bg-sunset")
+            background.classList.remove("bg-day")
         } else if (game.time === 2) {
             game.time += swapVisibility(night, sunset)
-            background.style.backgroundColor = "var(--nightBackground)"
+            background.classList.add("bg-night")
+            background.classList.remove("bg-sunset")
         } else if (game.time === 3) {
             game.time = swapVisibility(dawn, night, "res")
-            background.style.backgroundColor = "var(--dawnBackground)"
+            background.classList.add("bg-dawn")
+            background.classList.remove("bg-night")
         }
     }
+
+    console.log(background.classList)
 }
 
 export function resetTime() {
-    day.style.opacity = 1
-    sunset.style.opacity = 0
-    night.style.opacity = 0
-    dawn.style.opacity = 0
-    background.style.backgroundColor = "var(--dayBackground)"
+    background.classList.add("bg-day")
+    background.classList.remove("bg-dawn")
+    background.classList.remove("bg-sunset")
+    background.classList.remove("bg-night")
 }
 
 function swapVisibility(element1, element2, operation = "inc") {
