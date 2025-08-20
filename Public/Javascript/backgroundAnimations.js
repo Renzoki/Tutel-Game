@@ -26,9 +26,9 @@ function fillXGrid() {
 
 function preloadClouds() {
     cloudsPos = [
-        1152, 1058, 962, 866, 770, 676,
-        580, 484, 388, 290, 194, 96,
-        0, -94, -186, -282, -378, -474
+        1152, 962, 866, 676,
+        580, 484, 290, 194, 96,
+        0, -94, -186, -378, -474
     ]
 
     for (let i = 0; i < cloudsPos.length; i++) {
@@ -47,7 +47,7 @@ function appendClouds() {
         clouds.push(cloud)
         cloudsPos.push(-500)
         background.append(cloud)
-    }, 1500)
+    }, 2350)
 }
 
 function generateCloud() {

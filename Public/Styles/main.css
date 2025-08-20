@@ -40,7 +40,7 @@ body {
     width: 100vw;
     height: 100vh;
     z-index: -1;
-    transition: 2.5s;
+    transition: background-color 2.5s;
 }
 
 #main-container {
@@ -68,6 +68,11 @@ body {
     background-size: auto;
     position: absolute;
     transition: 2.5s;
+    opacity: 0;
+}
+
+.visible {
+    opacity: 1;
 }
 
 #base {
@@ -77,27 +82,27 @@ body {
 }
 
 #day {
-    opacity: 1;
     background-color: var(--day);
-    background-image: url("../Assets/Icons/day.png");
+    background-image: url("../Assets/Icons/Day.png");
+    transition: opacity 2.5s;
 }
 
 #sunset {
-    opacity: 0;
     background-color: var(--sunset);
     background-image: url("../Assets/Icons/sunset.png");
+    transition: opacity 2.5s;
 }
 
 #night {
-    opacity: 0;
     background-color: var(--night);
     background-image: url("../Assets/Icons/night.png");
+    transition: opacity 2.5s;
 }
 
 #dawn {
-    opacity: 0;
     background-color: var(--dawn);
     background-image: url("../Assets/Icons/dawn.png");
+    transition: opacity 2.5s;
 }
 
 #pause {
@@ -160,7 +165,6 @@ body {
     box-sizing: border-box;
     border-radius: 1em;
     display: flex;
-    transition: 5s;
 }
 
 #right-col,

@@ -21,8 +21,8 @@ function gameLoop() {
         if (gameState.game.frames % 200 === 0)
             fallingObjects.generateFallingObject(gameState, "Normal")
 
-        if (gameState.game.frames % 4000 === 0) 
-            timeHandler.changeTime(gameState)
+        if (gameState.game.frames % 1000 === 0) 
+            timeHandler.scheduleTimeChange(gameState)
 
         fallingObjects.updateFallingObjects(gameState, "Easy")
         gameState.game.frames++
