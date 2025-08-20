@@ -55,9 +55,12 @@ export const gameState = {
         this.elements.tutel.src = "../Assets/Icons/tutel-right.png"
         this.elements.tutel.style.left = this.player.left + "px"
         this.elements.tutel.style.top = this.player.top + "px"
+        this.elements.tutel.removeAttribute("hidden")
+        
         this.elements.pointsPlaceholder.innerText = 0
         this.elements.pointsPlaceholder.style.left = (window.innerWidth / 2) - 20 + "px"
         this.elements.pointsPlaceholder.style.top = containerRect.top + 60 + "px"
+        this.elements.pointsPlaceholder.removeAttribute("hidden")
         this.elements.restartBG.style.opacity = 0
     }
 };

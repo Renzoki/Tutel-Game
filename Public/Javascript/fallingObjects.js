@@ -7,8 +7,6 @@ export function generateFallingObject(gameState, difficulty) {
     const { containerRect } = elements
 
     let object = elements.originalFallingObject.cloneNode() // copy from the original
-    object.removeAttribute("hidden")
-
     let randNum = Math.floor(Math.random() * (containerRect.right * 0.95 - containerRect.left)) + containerRect.left; //fall on a random x val
     object.style.top = containerRect.top + "px"
     object.style.left = randNum + "px"
@@ -23,6 +21,7 @@ export function generateFallingObject(gameState, difficulty) {
 
     }
 
+    object.removeAttribute("hidden")
     elements.gameContainer.append(object)
     objects.fallingObj.push(object)
     objects.fallingObjPos.push(containerRect.top)
