@@ -2,6 +2,7 @@ const express = require("express")
 const app = express()
 const path = require('path')
 const { listIcons } = require("./src/loadAssetAddresses.js");
+const PORT = process.env.PORT || 3000;
 
 app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, 'Templates'));
@@ -20,6 +21,6 @@ app.get("/icons", async (req, res) => {
     }
 })
 
-app.listen(3000, () => {
+app.listen(PORT, () => {
     console.log("Listening at PORT 3000")
 })
